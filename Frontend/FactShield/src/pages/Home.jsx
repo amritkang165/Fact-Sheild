@@ -1,20 +1,31 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 
 function Home() {
+  const [showSpline, setShowSpline] = useState(false);
+
+  useEffect(() => {
+    // Force Spline to mount after page load
+    const timer = setTimeout(() => {
+      setShowSpline(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="hero">
-      {/* Logo */}
       <Header />
 
-      {/* Spline Background */}
-      <spline-viewer
-        url="https://prod.spline.design/zdsDt12YtbazL2tv/scene.splinecode"
-        className="spline-bg"
-      ></spline-viewer>
+      {showSpline && (
+        <spline-viewer
+          url="https://prod.spline.design/zdsDt12YtbazL2tv/scene.splinecode"
+          className="spline-bg"
+        ></spline-viewer>
+      )}
 
-      {/* Text Content */}
       <div className="hero-content">
-        <h1 className="hero-heading">
+        <h1>
           <span className="brand-font">FIGHT</span> <br />
           <span className="misinfo-word">MISINFORMATION</span> <br />
           <span className="brand-font">WITH AI</span>
