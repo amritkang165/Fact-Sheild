@@ -1,7 +1,7 @@
-import SplineScene from './components/SplineScene';
+import Home from "./pages/Home"
 
 function App() {
-  return <SplineScene />;
+  return <Home />
 }
 
-export default App;
+export default App
